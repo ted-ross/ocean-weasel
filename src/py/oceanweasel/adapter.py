@@ -60,7 +60,7 @@ class Adapter(object):
         if command == 'find':
             if body == None:
                 cursor = col.find()
-            if body.__class__ == dict:
+            elif body.__class__ == dict:
                 cursor = col.find(body)
             elif body.__class__ == list:
                 cursor = col.find(body[0], body[1])
@@ -73,6 +73,7 @@ class Adapter(object):
 def main(argv=None):
     adapter = Adapter()
     adapter.run()
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main())
